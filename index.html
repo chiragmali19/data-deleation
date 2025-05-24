@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Delete Your Account - Tappy Tac Toe by CK FutureTech</title>
-    <meta name="description" content="Request deletion of your Tappy Tac Toe account and associated data. Simple steps to permanently remove your information.">
+    <meta name="description"
+        content="Request deletion of your Tappy Tac Toe account and associated data. Simple steps to permanently remove your information.">
     <meta name="robots" content="index, follow">
-    
+
     <style>
         * {
             margin: 0;
@@ -91,7 +93,7 @@
         }
 
         .deletion-form {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
             padding: 2rem;
             border-radius: 12px;
             margin: 2rem 0;
@@ -242,7 +244,8 @@
             margin: 1.5rem 0 1rem 0;
         }
 
-        p, li {
+        p,
+        li {
             color: var(--text-secondary);
             font-size: clamp(0.9rem, 2vw, 1rem);
             line-height: 1.6;
@@ -284,11 +287,19 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <header class="header fade-in">
@@ -298,7 +309,8 @@
 
         <div class="content-card fade-in">
             <div class="warning-box">
-                <p><strong>Important:</strong> Account deletion is permanent and cannot be undone. Please review this page carefully before proceeding with your deletion request.</p>
+                <p><strong>Important:</strong> Account deletion is permanent and cannot be undone. Please review this
+                    page carefully before proceeding with your deletion request.</p>
             </div>
 
             <section>
@@ -348,7 +360,8 @@
 
             <section>
                 <h2>📧 Submit Deletion Request</h2>
-                <p>Fill out the form below to request account deletion. This will generate an email with your request that will be sent to our support team.</p>
+                <p>Fill out the form below to request account deletion. This will generate an email with your request
+                    that will be sent to our support team.</p>
 
                 <div class="deletion-form">
                     <form id="deletionForm">
@@ -357,7 +370,7 @@
                                 Google Account Email Address *
                             </label>
                             <input type="email" id="googleEmail" name="googleEmail" class="form-input" required
-                                   placeholder="your.email@gmail.com">
+                                placeholder="your.email@gmail.com">
                             <div class="form-help">
                                 The email address you used to sign into Tappy Tac Toe leaderboards
                             </div>
@@ -368,7 +381,7 @@
                                 Display Name in App
                             </label>
                             <input type="text" id="displayName" name="displayName" class="form-input"
-                                   placeholder="Your name as shown in leaderboards">
+                                placeholder="Your name as shown in leaderboards">
                             <div class="form-help">
                                 The name that appears in the leaderboards (if you remember it)
                             </div>
@@ -390,16 +403,22 @@
                             </label>
                             <div class="checkbox-group">
                                 <div class="checkbox-item">
-                                    <input type="checkbox" id="deleteLeaderboard" name="dataToDelete" value="leaderboard" checked>
-                                    <label for="deleteLeaderboard">Leaderboard data (scores, rankings, achievements)</label>
+                                    <input type="checkbox" id="deleteLeaderboard" name="dataToDelete"
+                                        value="leaderboard" checked>
+                                    <label for="deleteLeaderboard">Leaderboard data (scores, rankings,
+                                        achievements)</label>
                                 </div>
                                 <div class="checkbox-item">
-                                    <input type="checkbox" id="deleteAccount" name="dataToDelete" value="account" checked>
-                                    <label for="deleteAccount">Account information (Google association, profile data)</label>
+                                    <input type="checkbox" id="deleteAccount" name="dataToDelete" value="account"
+                                        checked>
+                                    <label for="deleteAccount">Account information (Google association, profile
+                                        data)</label>
                                 </div>
                                 <div class="checkbox-item">
-                                    <input type="checkbox" id="deleteFeedback" name="dataToDelete" value="feedback" checked>
-                                    <label for="deleteFeedback">Feedback and ratings (app reviews, support messages)</label>
+                                    <input type="checkbox" id="deleteFeedback" name="dataToDelete" value="feedback"
+                                        checked>
+                                    <label for="deleteFeedback">Feedback and ratings (app reviews, support
+                                        messages)</label>
                                 </div>
                                 <div class="checkbox-item">
                                     <input type="checkbox" id="deleteAll" name="dataToDelete" value="all" checked>
@@ -427,20 +446,22 @@
                                 Additional Information (optional)
                             </label>
                             <textarea id="additionalInfo" name="additionalInfo" rows="3" class="form-input"
-                                      placeholder="Any additional details or special requests..."></textarea>
+                                placeholder="Any additional details or special requests..."></textarea>
                         </div>
 
                         <div class="form-group">
                             <div class="checkbox-item">
                                 <input type="checkbox" id="confirmation" name="confirmation" required>
-                                <label for="confirmation">I understand that this deletion is permanent and cannot be undone *</label>
+                                <label for="confirmation">I understand that this deletion is permanent and cannot be
+                                    undone *</label>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="checkbox-item">
                                 <input type="checkbox" id="verification" name="verification" required>
-                                <label for="verification">I confirm that I am the owner of the Google account listed above *</label>
+                                <label for="verification">I confirm that I am the owner of the Google account listed
+                                    above *</label>
                             </div>
                         </div>
 
@@ -455,10 +476,11 @@
                 <h2>⚡ Quick Email Option</h2>
                 <div class="contact-section">
                     <h3>Prefer a Simple Email?</h3>
-                    <p>If you prefer not to use the form above, you can send a simple email with your deletion request.</p>
-                    
-                    <a href="mailto:ck.futuretech@gmail.com?subject=Tappy%20Tac%20Toe%20-%20Account%20Deletion%20Request&body=Hello%20CK%20FutureTech%2C%0A%0AI%20am%20requesting%20the%20permanent%20deletion%20of%20my%20Tappy%20Tac%20Toe%20account%20and%20all%20associated%20data.%0A%0AGGoogle%20Account%20Email%3A%20%5BYour%20Email%20Here%5D%0ADisplay%20Name%20in%20App%3A%20%5BYour%20Display%20Name%5D%0AFirst%20Used%20Leaderboards%3A%20%5BApproximate%20Date%5D%0AData%20to%20Delete%3A%20All%20account%20data%0A%0AI%20understand%20this%20action%20is%20permanent%20and%20cannot%20be%20undone.%0A%0AThank%20you." 
-                       class="email-button">
+                    <p>If you prefer not to use the form above, you can send a simple email with your deletion request.
+                    </p>
+
+                    <a href="mailto:ck.futuretech@gmail.com?subject=Tappy%20Tac%20Toe%20-%20Account%20Deletion%20Request&body=Hello%20CK%20FutureTech%2C%0A%0AI%20am%20requesting%20the%20permanent%20deletion%20of%20my%20Tappy%20Tac%20Toe%20account%20and%20all%20associated%20data.%0A%0AGGoogle%20Account%20Email%3A%20%5BYour%20Email%20Here%5D%0ADisplay%20Name%20in%20App%3A%20%5BYour%20Display%20Name%5D%0AFirst%20Used%20Leaderboards%3A%20%5BApproximate%20Date%5D%0AData%20to%20Delete%3A%20All%20account%20data%0A%0AI%20understand%20this%20action%20is%20permanent%20and%20cannot%20be%20undone.%0A%0AThank%20you."
+                        class="email-button">
                         📧 Send Simple Deletion Request
                     </a>
 
@@ -482,50 +504,53 @@
 
             <section>
                 <h2>❓ Frequently Asked Questions</h2>
-                
+
                 <div class="data-card">
                     <h4>Can I recover my account after deletion?</h4>
-                    <p>No, account deletion is permanent and irreversible. Once deleted, your leaderboard data, scores, and account information cannot be recovered.</p>
+                    <p>No, account deletion is permanent and irreversible. Once deleted, your leaderboard data, scores,
+                        and account information cannot be recovered.</p>
                 </div>
 
                 <div class="data-card">
                     <h4>How do I delete local game data?</h4>
-                    <p>Local game data (statistics, preferences) is stored on your device. To delete this data, uninstall the Tappy Tac Toe app or clear app data in your Android settings.</p>
+                    <p>Local game data (statistics, preferences) is stored on your device. To delete this data,
+                        uninstall the Tappy Tac Toe app or clear app data in your Android settings.</p>
                 </div>
 
                 <div class="data-card">
                     <h4>What happens to my Google account?</h4>
-                    <p>Deleting your Tappy Tac Toe account does not affect your Google account. We only remove the association between your Google account and our app.</p>
+                    <p>Deleting your Tappy Tac Toe account does not affect your Google account. We only remove the
+                        association between your Google account and our app.</p>
                 </div>
             </section>
         </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Form submission handler
             const deletionForm = document.getElementById('deletionForm');
             if (deletionForm) {
-                deletionForm.addEventListener('submit', function(e) {
+                deletionForm.addEventListener('submit', function (e) {
                     e.preventDefault();
-                    
+
                     // Show loading state
                     const submitButton = this.querySelector('.deletion-button');
                     const originalText = submitButton.innerHTML;
                     submitButton.innerHTML = '📧 Opening Gmail...';
                     submitButton.disabled = true;
-                    
+
                     // Collect form data
                     const formData = new FormData(this);
                     const data = {};
-                    
+
                     // Get basic fields
                     data.googleEmail = formData.get('googleEmail');
                     data.displayName = formData.get('displayName') || 'Not provided';
                     data.firstUsed = formData.get('firstUsed') || 'Not provided';
                     data.reason = formData.get('reason') || 'Not specified';
                     data.additionalInfo = formData.get('additionalInfo') || 'None';
-                    
+
                     // Get selected data types to delete
                     const dataToDelete = [];
                     const checkboxes = document.querySelectorAll('input[name="dataToDelete"]:checked');
@@ -534,15 +559,15 @@
                         dataToDelete.push(label);
                     });
                     data.dataToDelete = dataToDelete.join('\n• ');
-                    
+
                     // Get current date and time
                     const now = new Date();
                     data.requestDate = now.toLocaleDateString() + ' at ' + now.toLocaleTimeString();
                     data.requestId = Date.now() + '-' + Math.random().toString(36).substr(2, 9);
-                    
+
                     // Create email subject and body
                     const subject = encodeURIComponent('Tappy Tac Toe - Account Deletion Request - ID: ' + data.requestId);
-                    
+
                     const emailBody = `Hello CK FutureTech Team,
 
 I am submitting a formal request for the permanent deletion of my Tappy Tac Toe account and associated data.
@@ -602,17 +627,17 @@ ${data.displayName}`;
 
                     // Create Gmail URLs for both email addresses
                     const gmailBaseUrl = 'https://mail.google.com/mail/?view=cm&fs=1';
-                    
+
                     const primaryGmailUrl = `${gmailBaseUrl}&to=ck.futuretech@gmail.com&su=${subject}&body=${encodeURIComponent(emailBody)}`;
                     const fallbackGmailUrl = `${gmailBaseUrl}&to=malichirag1369@gmail.com&su=${subject}&body=${encodeURIComponent(emailBody)}`;
-                    
+
                     // Also create mailto fallback for mobile devices
                     const mailtoUrl = `mailto:ck.futuretech@gmail.com?subject=${subject}&body=${encodeURIComponent(emailBody)}`;
-                    
+
                     setTimeout(() => {
                         // Try Gmail web first
                         const gmailWindow = window.open(primaryGmailUrl, '_blank');
-                        
+
                         // Check if popup was blocked
                         setTimeout(() => {
                             if (!gmailWindow || gmailWindow.closed || typeof gmailWindow.closed == 'undefined') {
@@ -620,11 +645,11 @@ ${data.displayName}`;
                                 window.location.href = mailtoUrl;
                             }
                         }, 1000);
-                        
+
                         // Show success message
                         submitButton.innerHTML = '✅ Gmail Opened!';
                         submitButton.style.background = '#10b981';
-                        
+
                         setTimeout(() => {
                             const userConfirm = confirm(`📧 Gmail has been opened with your deletion request!
 
@@ -640,18 +665,18 @@ NEXT STEPS:
 4. 🗑️ Complete deletion within 30-90 days
 
 Would you also like to send a copy to our backup email (malichirag1369@gmail.com) for faster processing?`);
-                            
+
                             if (userConfirm) {
                                 // Open backup email
                                 window.open(fallbackGmailUrl, '_blank');
-                                
+
                                 setTimeout(() => {
                                     alert('📧 Backup email also opened!\n\nPlease send both emails to ensure we receive your request.\n\nSave your Request ID: ' + data.requestId);
                                 }, 500);
                             } else {
                                 alert('✅ Request prepared successfully!\n\nPlease send the email in Gmail to complete your deletion request.\n\nSave your Request ID: ' + data.requestId);
                             }
-                            
+
                             // Reset form
                             deletionForm.reset();
                             submitButton.innerHTML = originalText;
@@ -665,7 +690,7 @@ Would you also like to send a copy to our backup email (malichirag1369@gmail.com
             // Handle "Delete All" checkbox
             const deleteAllCheckbox = document.getElementById('deleteAll');
             if (deleteAllCheckbox) {
-                deleteAllCheckbox.addEventListener('change', function() {
+                deleteAllCheckbox.addEventListener('change', function () {
                     const otherCheckboxes = document.querySelectorAll('input[name="dataToDelete"]:not(#deleteAll)');
                     if (this.checked) {
                         otherCheckboxes.forEach(cb => cb.checked = true);
@@ -676,7 +701,7 @@ Would you also like to send a copy to our backup email (malichirag1369@gmail.com
             // Handle individual checkboxes
             const individualCheckboxes = document.querySelectorAll('input[name="dataToDelete"]:not(#deleteAll)');
             individualCheckboxes.forEach(cb => {
-                cb.addEventListener('change', function() {
+                cb.addEventListener('change', function () {
                     const deleteAllCb = document.getElementById('deleteAll');
                     if (deleteAllCb) {
                         const allOthersChecked = Array.from(document.querySelectorAll('input[name="dataToDelete"]:not(#deleteAll)')).every(cb => cb.checked);
@@ -688,7 +713,7 @@ Would you also like to send a copy to our backup email (malichirag1369@gmail.com
             // Email validation
             const googleEmailField = document.getElementById('googleEmail');
             if (googleEmailField) {
-                googleEmailField.addEventListener('blur', function() {
+                googleEmailField.addEventListener('blur', function () {
                     const email = this.value;
                     if (email && (!email.includes('@') || !email.includes('.'))) {
                         this.style.borderColor = '#ef4444';
@@ -702,4 +727,5 @@ Would you also like to send a copy to our backup email (malichirag1369@gmail.com
         });
     </script>
 </body>
+
 </html>
