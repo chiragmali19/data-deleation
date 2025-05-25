@@ -360,8 +360,7 @@
 
             <section>
                 <h2>📧 Submit Deletion Request</h2>
-                <p>Fill out the form below to request account deletion. This will generate a simple email with your
-                    request
+                <p>Fill out the form below to request account deletion. This will generate a simple email with your request
                     that will be sent to our support team.</p>
 
                 <div class="deletion-form">
@@ -468,6 +467,10 @@
 
                         <button type="submit" class="deletion-button">
                             🗑️ Submit Deletion Request
+                        </button>
+                        
+                        <button type="button" id="copyEmailButton" class="deletion-button" style="background: #06b6d4; margin-top: 0.5rem;">
+                            📋 Copy Email Content
                         </button>
                     </form>
                 </div>
@@ -595,52 +598,113 @@ ${data.displayName}`;
 
                     // Create simple mailto URL (works better on mobile)
                     const mailtoUrl = `mailto:ck.futuretech@gmail.com?subject=${subject}&body=${encodeURIComponent(emailBody)}`;
-
+                    
                     // Create simplified Gmail web URL
                     const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=ck.futuretech@gmail.com&su=${subject}&body=${encodeURIComponent(emailBody)}`;
 
                     setTimeout(() => {
-                        // Use simple approach - try mailto first (works better on mobile)
-                        const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                        // Try to copy email content to clipboard
+                        const fullEmailContent = `To: ck.futuretech@gmail.com
+Subject: ${decodeURIComponent(subject)}
 
-                        if (isMobile) {
-                            // Mobile: Use mailto directly
-                            window.location.href = mailtoUrl;
-                        } else {
-                            // Desktop: Try Gmail web, fallback to mailto
-                            const gmailWindow = window.open(gmailUrl, '_blank');
+${emailBody}`;
+
+                        // Function to copy to clipboard
+                        const copyToClipboard = async (text) => {
+                            try {
+                                if (navigator.clipboard && window.isSecureContext) {
+                                    await navigator.clipboard.writeText(text);
+                                    return true;
+                                } else {
+                                    // Fallback for older browsers
+                                    const textArea = document.createElement('textarea');
+                                    textArea.value = text;
+                                    textArea.style.position = 'fixed';
+                                    textArea.style.left = '-999999px';
+                                    textArea.style.top = '-999999px';
+                                    document.body.appendChild(textArea);
+                                    textArea.focus();
+                                    textArea.select();
+                                    const result = document.execCommand('copy');
+                                    document.body.removeChild(textArea);
+                                    return result;
+                                }
+                            } catch (err) {
+                                return false;
+                            }
+                        };
+
+                        // Check if mobile device
+                        const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                        
+                        // Try to copy content to clipboard
+                        copyToClipboard(fullEmailContent).then(copied => {
+                            // Show success message
+                            submitButton.innerHTML = '✅ Ready to Send!';
+                            submitButton.style.background = '#10b981';
 
                             setTimeout(() => {
-                                if (!gmailWindow || gmailWindow.closed || typeof gmailWindow.closed == 'undefined') {
-                                    window.location.href = mailtoUrl;
-                                }
-                            }, 1000);
-                        }
-
-                        // Show success message
-                        submitButton.innerHTML = '✅ Email App Opened!';
-                        submitButton.style.background = '#10b981';
-
-                        setTimeout(() => {
-                            alert(`✅ Email opened with your deletion request!
+                                if (copied) {
+                                    // Content copied successfully
+                                    const userChoice = confirm(`📋 Email content copied to clipboard!
 
 REQUEST ID: ${data.requestId}
-ACCOUNT: ${data.googleEmail}
+TO: ck.futuretech@gmail.com
 
 NEXT STEPS:
-1. Review the email that opened
-2. Send the email to submit your request  
-3. We'll respond within 48 hours
-4. Deletion completed in 30-90 days
+1. Click "OK" to open Gmail app
+2. Create new email
+3. Paste the copied content (long press → Paste)
+4. Send the email
 
-Save your Request ID: ${data.requestId}`);
+Click "OK" to open Gmail now, or "Cancel" to copy again.`);
 
-                            // Reset form
-                            deletionForm.reset();
-                            submitButton.innerHTML = originalText;
-                            submitButton.style.background = '#ef4444';
-                            submitButton.disabled = false;
-                        }, 1500);
+                                    if (userChoice) {
+                                        // Open Gmail app
+                                        window.location.href = 'mailto:ck.futuretech@gmail.com';
+                                    } else {
+                                        // Show the content in an alert for manual copy
+                                        alert(`📧 COPY THIS EMAIL CONTENT:
+
+${fullEmailContent}
+
+TO SEND:
+1. Open Gmail app manually
+2. Create new email to: ck.futuretech@gmail.com  
+3. Copy and paste the above content
+4. Send the email
+
+Request ID: ${data.requestId}`);
+                                    }
+                                } else {
+                                    // Couldn't copy - show content directly
+                                    alert(`📧 PLEASE COPY THIS EMAIL CONTENT:
+
+${fullEmailContent}
+
+TO SEND:
+1. Open Gmail app
+2. Create new email to: ck.futuretech@gmail.com
+3. Copy and paste the above content
+4. Send the email
+
+Request ID: ${data.requestId}`);
+
+                                    // Also try to open Gmail
+                                    setTimeout(() => {
+                                        window.location.href = 'mailto:ck.futuretech@gmail.com';
+                                    }, 1000);
+                                }
+
+                                // Reset form
+                                setTimeout(() => {
+                                    deletionForm.reset();
+                                    submitButton.innerHTML = originalText;
+                                    submitButton.style.background = '#ef4444';
+                                    submitButton.disabled = false;
+                                }, 2000);
+                            }, 1500);
+                        });
                     }, 500);
                 });
             }
@@ -667,6 +731,118 @@ Save your Request ID: ${data.requestId}`);
                     }
                 });
             });
+
+            // Copy Email Button Handler
+            const copyEmailButton = document.getElementById('copyEmailButton');
+            if (copyEmailButton) {
+                copyEmailButton.addEventListener('click', function() {
+                    // Collect form data (similar to submit)
+                    const formData = new FormData(deletionForm);
+                    const data = {};
+
+                    data.googleEmail = formData.get('googleEmail') || 'Please enter your email';
+                    data.displayName = formData.get('displayName') || 'Not provided';
+                    data.firstUsed = formData.get('firstUsed') || 'Not provided';
+                    data.reason = formData.get('reason') || 'Not specified';
+                    data.additionalInfo = formData.get('additionalInfo') || 'None';
+
+                    const dataToDelete = [];
+                    const checkboxes = document.querySelectorAll('input[name="dataToDelete"]:checked');
+                    checkboxes.forEach(cb => {
+                        const label = cb.nextElementSibling.textContent;
+                        dataToDelete.push(label);
+                    });
+                    data.dataToDelete = dataToDelete.join(', ');
+
+                    const now = new Date();
+                    data.requestId = Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+
+                    const emailContent = `Hello CK FutureTech,
+
+I request permanent deletion of my Tappy Tac Toe account.
+
+Account Email: ${data.googleEmail}
+Display Name: ${data.displayName}
+First Used: ${data.firstUsed}
+Request ID: ${data.requestId}
+
+Data to Delete: ${data.dataToDelete}
+
+Reason: ${data.reason}
+Additional Info: ${data.additionalInfo}
+
+I confirm:
+- I own this Google account
+- I understand deletion is permanent
+- I agree to the deletion timeline
+
+Please process within 30-90 days and send confirmation.
+
+Thank you,
+${data.displayName}`;
+
+                    // Copy to clipboard
+                    const copyToClipboard = async (text) => {
+                        try {
+                            if (navigator.clipboard) {
+                                await navigator.clipboard.writeText(text);
+                                return true;
+                            } else {
+                                const textArea = document.createElement('textarea');
+                                textArea.value = text;
+                                document.body.appendChild(textArea);
+                                textArea.select();
+                                const result = document.execCommand('copy');
+                                document.body.removeChild(textArea);
+                                return result;
+                            }
+                        } catch (err) {
+                            return false;
+                        }
+                    };
+
+                    copyToClipboard(emailContent).then(copied => {
+                        if (copied) {
+                            this.innerHTML = '✅ Copied!';
+                            this.style.background = '#10b981';
+                            
+                            alert(`📋 Email content copied successfully!
+
+TO SEND YOUR REQUEST:
+1. Open Gmail app
+2. Create new email
+3. To: ck.futuretech@gmail.com
+4. Subject: Tappy Tac Toe Account Deletion Request
+5. Paste content in message body
+6. Send email
+
+Request ID: ${data.requestId}
+
+Click OK to open Gmail app now.`);
+
+                            // Open Gmail
+                            window.location.href = 'mailto:ck.futuretech@gmail.com?subject=Tappy%20Tac%20Toe%20Account%20Deletion%20Request';
+
+                            setTimeout(() => {
+                                this.innerHTML = '📋 Copy Email Content';
+                                this.style.background = '#06b6d4';
+                            }, 3000);
+                        } else {
+                            alert(`❌ Could not copy automatically. Please copy this text manually:
+
+${emailContent}
+
+TO SEND:
+1. Copy the above text
+2. Open Gmail app  
+3. Send to: ck.futuretech@gmail.com
+4. Subject: Tappy Tac Toe Account Deletion Request
+
+Request ID: ${data.requestId}`);
+                        }
+                    });
+                });
+            }
 
             // Email validation
             const googleEmailField = document.getElementById('googleEmail');
