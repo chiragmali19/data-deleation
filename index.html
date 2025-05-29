@@ -2,864 +2,1000 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delete Your Account - Tappy Tac Toe by CK FutureTech</title>
-    <meta name="description"
-        content="Request deletion of your Tappy Tac Toe account and associated data. Simple steps to permanently remove your information.">
-    <meta name="robots" content="index, follow">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Data Deletion Request - Tappy Tac Toe</title>
+  <meta name="description" content="Request deletion of your Tappy Tac Toe data. We respect your privacy and will process your request within 48 hours.">
+  <style>
+    :root {
+      /* Color System */
+      --primary-light: #6366F1;
+      --primary-dark: #8B5CF6;
+      --secondary-light: #10B981;
+      --secondary-dark: #34D399;
+      --accent-light: #F59E0B;
+      --accent-dark: #FBBF24;
+      --danger-light: #EF4444;
+      --danger-dark: #F87171;
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      /* Neutrals */
+      --neutral-50: #F8F9FA;
+      --neutral-100: #F1F3F4;
+      --neutral-200: #E8EAED;
+      --neutral-300: #DADCE0;
+      --neutral-400: #BDC1C6;
+      --neutral-500: #9AA0A6;
+      --neutral-600: #80868B;
+      --neutral-700: #5F6368;
+      --neutral-800: #3C4043;
+      --neutral-900: #202124;
 
-        :root {
-            --primary-color: #6366f1;
-            --secondary-color: #8b5cf6;
-            --accent-color: #06b6d4;
-            --text-primary: #1f2937;
-            --text-secondary: #6b7280;
-            --bg-primary: #ffffff;
-            --bg-secondary: #f8fafc;
-            --border-color: #e5e7eb;
-            --success-color: #10b981;
-            --warning-color: #f59e0b;
-            --error-color: #ef4444;
-            --shadow-light: rgba(0, 0, 0, 0.05);
-            --shadow-medium: rgba(0, 0, 0, 0.1);
-        }
+      /* Theme Colors */
+      --primary-color: var(--primary-light);
+      --secondary-color: var(--secondary-light);
+      --accent-color: var(--accent-light);
+      --danger-color: var(--danger-light);
+      --background-color: var(--neutral-50);
+      --card-background: #FFFFFF;
+      --text-color: var(--neutral-900);
+      --text-secondary: var(--neutral-700);
+      --border-color: var(--neutral-300);
+      --shadow-color: rgba(60, 64, 67, 0.15);
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
+      /* Accent color with alpha */
+      --primary-color-rgb: 99, 102, 241;
+      --danger-color-rgb: 239, 68, 68;
+      --secondary-color-rgb: 16, 185, 129;
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 1rem;
-        }
+      /* Typography */
+      --font-heading: 'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
-        .header {
-            text-align: center;
-            padding: 2rem 0;
-            color: white;
-            margin-bottom: 2rem;
-        }
+      /* Spacing System */
+      --spacing-xs: 4px;
+      --spacing-sm: 8px;
+      --spacing-md: 16px;
+      --spacing-lg: 24px;
+      --spacing-xl: 32px;
+      --spacing-xxl: 48px;
 
-        .header h1 {
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+      /* Border Radius */
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --radius-full: 9999px;
 
-        .header p {
-            font-size: clamp(1rem, 2.5vw, 1.1rem);
-            opacity: 0.9;
-        }
+      /* Font Weights */
+      --font-weight-normal: 400;
+      --font-weight-medium: 500;
+      --font-weight-bold: 700;
 
-        .content-card {
-            background: var(--bg-primary);
-            border-radius: 20px;
-            padding: clamp(1.5rem, 4vw, 2.5rem);
-            box-shadow: 0 20px 25px -5px var(--shadow-medium);
-            margin-bottom: 2rem;
-        }
+      /* Animations */
+      --transition-fast: all 0.15s ease;
+      --transition-default: all 0.25s ease;
+      --transition-slow: all 0.4s ease;
 
-        .warning-box {
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            border: 2px solid var(--warning-color);
-            border-radius: 12px;
-            padding: 1.25rem;
-            margin: 1.5rem 0;
-            position: relative;
-        }
+      /* Shadows */
+      --shadow-sm: 0 1px 2px rgba(60, 64, 67, 0.1);
+      --shadow-md: 0 4px 8px rgba(60, 64, 67, 0.12);
+      --shadow-lg: 0 8px 24px rgba(60, 64, 67, 0.14);
+      --shadow-focus: 0 0 0 3px rgba(99, 102, 241, 0.25);
+    }
 
-        .warning-box::before {
-            content: '⚠️';
-            position: absolute;
-            top: -10px;
-            left: 20px;
-            background: var(--bg-primary);
-            padding: 0 0.5rem;
-            font-size: 1.2rem;
-        }
+    [data-theme="dark"] {
+      /* Theme Colors - Dark Mode */
+      --primary-color: var(--primary-dark);
+      --secondary-color: var(--secondary-dark);
+      --accent-color: var(--accent-dark);
+      --danger-color: var(--danger-dark);
+      --background-color: var(--neutral-900);
+      --card-background: var(--neutral-800);
+      --text-color: var(--neutral-200);
+      --text-secondary: var(--neutral-500);
+      --border-color: var(--neutral-700);
+      --shadow-color: rgba(0, 0, 0, 0.3);
 
-        .deletion-form {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 2rem;
-            border-radius: 12px;
-            margin: 2rem 0;
-            border: 2px solid var(--primary-color);
-        }
+      /* Shadows - Dark Mode */
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+      --shadow-focus: 0 0 0 3px rgba(139, 92, 246, 0.3);
+    }
 
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        .form-label {
-            display: block;
-            color: var(--text-primary);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
+    html {
+      scroll-behavior: smooth;
+      text-size-adjust: 100%;
+    }
 
-        .form-input {
-            width: 100%;
-            padding: 0.75rem;
-            border: 2px solid var(--border-color);
-            border-radius: 8px;
-            background: white;
-            color: #333;
-            font-size: 1rem;
-        }
+    body {
+      font-family: var(--font-body);
+      background: linear-gradient(135deg, var(--background-color) 0%, color-mix(in srgb, var(--background-color) 95%, var(--primary-color)) 100%);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: var(--spacing-md);
+      margin: 0;
+      min-height: 100vh;
+      transition: var(--transition-default);
+    }
 
-        .form-input:focus {
-            outline: none;
-            border-color: var(--primary-color);
-        }
+    .container {
+      max-width: 800px;
+      width: 100%;
+      margin: var(--spacing-xl) auto;
+      background: var(--card-background);
+      padding: 0;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      transition: var(--transition-default);
+    }
 
-        .form-help {
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-            margin-top: 0.25rem;
-        }
+    .header {
+      background: linear-gradient(135deg, var(--danger-color) 0%, color-mix(in srgb, var(--danger-color) 80%, var(--primary-color)) 100%);
+      color: white;
+      padding: var(--spacing-xl);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
 
-        .checkbox-group {
-            background: var(--bg-secondary);
-            padding: 1rem;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-        }
+    .header:before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+      transform: rotate(30deg);
+      z-index: 1;
+      pointer-events: none;
+    }
 
-        .checkbox-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 0.5rem;
-            cursor: pointer;
-        }
+    .logo-container {
+      position: relative;
+      width: 80px;
+      height: 80px;
+      margin: 0 auto var(--spacing-lg);
+      background-color: white;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-md);
+      font-size: 2.5rem;
+    }
 
-        .checkbox-item:last-child {
-            margin-bottom: 0;
-        }
+    h1 {
+      color: white;
+      font-family: var(--font-heading);
+      font-size: 2.4rem;
+      margin-bottom: var(--spacing-sm);
+      font-weight: var(--font-weight-bold);
+      line-height: 1.2;
+      position: relative;
+      z-index: 2;
+    }
 
-        .checkbox-item input {
-            margin-right: 0.5rem;
-            transform: scale(1.2);
-        }
+    .header-subtitle {
+      color: rgba(255, 255, 255, 0.9);
+      font-family: var(--font-heading);
+      font-weight: var(--font-weight-medium);
+      font-size: 1.1rem;
+      position: relative;
+      z-index: 2;
+    }
 
-        .checkbox-item label {
-            cursor: pointer;
-            color: var(--text-primary);
-        }
+    .content {
+      padding: var(--spacing-xl);
+    }
 
-        .deletion-button {
-            width: 100%;
-            background: #ef4444;
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 1rem;
-        }
+    .intro-section {
+      text-align: center;
+      margin-bottom: var(--spacing-xxl);
+    }
 
-        .deletion-button:hover {
-            background: #dc2626;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
-        }
+    .intro-section h2 {
+      color: var(--text-color);
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      margin-bottom: var(--spacing-md);
+      font-weight: var(--font-weight-medium);
+    }
 
-        .email-button {
-            display: inline-block;
-            background: var(--primary-color);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            margin: 1rem 0.5rem;
-        }
+    .intro-section p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      line-height: 1.7;
+      max-width: 600px;
+      margin: 0 auto var(--spacing-lg);
+    }
 
-        .email-button:hover {
-            background: var(--secondary-color);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
-        }
+    .warning-box {
+      background-color: rgba(var(--danger-color-rgb), 0.05);
+      border: 2px solid rgba(var(--danger-color-rgb), 0.2);
+      border-radius: var(--radius-md);
+      padding: var(--spacing-lg);
+      margin: var(--spacing-xl) 0;
+      text-align: center;
+    }
 
-        .contact-section {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 2rem;
-            border-radius: 16px;
-            text-align: center;
-            margin: 2rem 0;
-        }
+    .warning-box .icon {
+      width: 48px;
+      height: 48px;
+      color: var(--danger-color);
+      margin: 0 auto var(--spacing-md);
+    }
 
-        .data-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin: 1.5rem 0;
-        }
+    .warning-box h3 {
+      color: var(--danger-color);
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      margin-bottom: var(--spacing-sm);
+      font-weight: var(--font-weight-medium);
+    }
 
-        .data-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 1.5rem;
-            box-shadow: 0 2px 4px var(--shadow-light);
-        }
+    .warning-box p {
+      color: var(--text-secondary);
+      margin-bottom: var(--spacing-md);
+    }
 
-        .data-card h4 {
-            color: var(--primary-color);
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-        }
+    .deletion-form {
+      background-color: var(--card-background);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: var(--spacing-xl);
+      margin: var(--spacing-xl) 0;
+      box-shadow: var(--shadow-sm);
+    }
 
-        h2 {
-            color: var(--primary-color);
-            font-size: clamp(1.25rem, 3vw, 1.6rem);
-            font-weight: 700;
-            margin: 2rem 0 1rem 0;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--primary-color);
-        }
+    .form-section {
+      margin-bottom: var(--spacing-xl);
+    }
 
-        h3 {
-            color: var(--text-primary);
-            font-size: clamp(1.1rem, 2.5vw, 1.25rem);
-            font-weight: 600;
-            margin: 1.5rem 0 1rem 0;
-        }
+    .form-section h3 {
+      color: var(--text-color);
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      margin-bottom: var(--spacing-md);
+      font-weight: var(--font-weight-medium);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
 
-        p,
-        li {
-            color: var(--text-secondary);
-            font-size: clamp(0.9rem, 2vw, 1rem);
-            line-height: 1.6;
-            margin-bottom: 0.75rem;
-        }
+    .form-section .icon {
+      width: 20px;
+      height: 20px;
+      color: var(--primary-color);
+    }
 
-        ul {
-            padding-left: 1.5rem;
-            margin: 1rem 0;
-        }
+    .form-group {
+      margin-bottom: var(--spacing-lg);
+    }
 
-        @media (max-width: 768px) {
-            .container {
-                padding: 0.75rem;
-            }
+    .form-group label {
+      display: block;
+      color: var(--text-color);
+      font-weight: var(--font-weight-medium);
+      margin-bottom: var(--spacing-xs);
+    }
 
-            .data-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: var(--spacing-md);
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      background-color: var(--card-background);
+      color: var(--text-color);
+      transition: var(--transition-fast);
+    }
 
-            .deletion-form {
-                padding: 1rem;
-            }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: var(--shadow-focus);
+    }
 
-            .contact-section {
-                padding: 1.5rem;
-            }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
 
-            .email-button {
-                display: block;
-                margin: 0.5rem 0;
-                text-align: center;
-            }
-        }
+    .form-group small {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-top: var(--spacing-xs);
+      display: block;
+    }
 
-        .fade-in {
-            animation: fadeIn 0.6s ease-in;
-        }
+    .checkbox-group {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--spacing-sm);
+      margin-bottom: var(--spacing-lg);
+    }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
+    .checkbox-group input[type="checkbox"] {
+      width: auto;
+      margin: 0;
+      transform: scale(1.2);
+      accent-color: var(--primary-color);
+    }
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
+    .checkbox-group label {
+      margin: 0;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    .data-types {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--spacing-md);
+      margin-top: var(--spacing-md);
+    }
+
+    .data-type-item {
+      background-color: rgba(var(--primary-color-rgb), 0.05);
+      border: 1px solid rgba(var(--primary-color-rgb), 0.2);
+      border-radius: var(--radius-sm);
+      padding: var(--spacing-md);
+      text-align: center;
+      transition: var(--transition-fast);
+    }
+
+    .data-type-item:hover {
+      background-color: rgba(var(--primary-color-rgb), 0.1);
+      transform: translateY(-2px);
+    }
+
+    .data-type-item .icon {
+      width: 32px;
+      height: 32px;
+      color: var(--primary-color);
+      margin: 0 auto var(--spacing-sm);
+    }
+
+    .data-type-item h4 {
+      color: var(--text-color);
+      font-size: 1rem;
+      font-weight: var(--font-weight-medium);
+      margin-bottom: var(--spacing-xs);
+    }
+
+    .data-type-item p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    .data-type-item .timeline {
+      color: var(--primary-color);
+      font-weight: var(--font-weight-medium);
+      font-size: 0.85rem;
+      margin-top: var(--spacing-xs);
+    }
+
+    .submit-section {
+      text-align: center;
+      margin-top: var(--spacing-xxl);
+      padding-top: var(--spacing-xl);
+      border-top: 1px solid var(--border-color);
+    }
+
+    .submit-button {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      background: linear-gradient(135deg, var(--danger-color) 0%, color-mix(in srgb, var(--danger-color) 80%, var(--primary-color)) 100%);
+      color: white;
+      border: none;
+      padding: var(--spacing-md) var(--spacing-xl);
+      border-radius: var(--radius-full);
+      font-family: var(--font-body);
+      font-size: 1.1rem;
+      font-weight: var(--font-weight-medium);
+      cursor: pointer;
+      transition: var(--transition-default);
+      box-shadow: var(--shadow-md);
+      text-decoration: none;
+    }
+
+    .submit-button:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+      opacity: 0.95;
+    }
+
+    .submit-button svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .timeline {
+      background-color: rgba(var(--primary-color-rgb), 0.05);
+      border-radius: var(--radius-md);
+      padding: var(--spacing-lg);
+      margin: var(--spacing-xl) 0;
+    }
+
+    .timeline h3 {
+      color: var(--primary-color);
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      margin-bottom: var(--spacing-md);
+      font-weight: var(--font-weight-medium);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+
+    .timeline-steps {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
+    }
+
+    .timeline-step {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-md);
+    }
+
+    .timeline-step .step-number {
+      background-color: var(--primary-color);
+      color: white;
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: var(--font-weight-bold);
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .timeline-step .step-content h4 {
+      color: var(--text-color);
+      font-weight: var(--font-weight-medium);
+      margin-bottom: var(--spacing-xs);
+    }
+
+    .timeline-step .step-content p {
+      color: var(--text-secondary);
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: var(--spacing-xxl);
+      padding: var(--spacing-xl);
+      background-color: var(--neutral-100);
+      border-top: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    [data-theme="dark"] .footer {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    .controls {
+      position: fixed;
+      top: var(--spacing-md);
+      right: var(--spacing-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-sm);
+      z-index: 100;
+    }
+
+    .control-button {
+      background-color: var(--card-background);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition-default);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .control-button:hover {
+      color: var(--primary-color);
+      border-color: var(--primary-color);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+
+    .control-button svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Responsive */
+    @media screen and (max-width: 768px) {
+      body {
+        padding: var(--spacing-sm);
+      }
+
+      .container {
+        margin: var(--spacing-md) auto;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .intro-section h2 {
+        font-size: 1.5rem;
+      }
+
+      .data-types {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-steps {
+        gap: var(--spacing-lg);
+      }
+
+      .controls {
+        bottom: var(--spacing-md);
+        top: auto;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .content > * {
+      animation: fadeIn 0.6s ease-out;
+    }
+  </style>
 </head>
 
 <body>
-    <div class="container">
-        <header class="header fade-in">
-            <h1>🗑️ Delete Your Account</h1>
-            <p>Tappy Tac Toe by CK FutureTech</p>
-        </header>
+  <div class="controls">
+    <button class="control-button" id="theme-toggle" aria-label="Toggle dark mode">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </button>
+    <button class="control-button" id="scroll-top" aria-label="Scroll to top">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="18 15 12 9 6 15"></polyline>
+      </svg>
+    </button>
+  </div>
 
-        <div class="content-card fade-in">
-            <div class="warning-box">
-                <p><strong>Important:</strong> Account deletion is permanent and cannot be undone. Please review this
-                    page carefully before proceeding with your deletion request.</p>
-            </div>
-
-            <section>
-                <h2>🎯 What Gets Deleted</h2>
-                <div class="data-grid">
-                    <div class="data-card">
-                        <h4>🏆 Leaderboard Data</h4>
-                        <ul>
-                            <li>Your scores and rankings</li>
-                            <li>Leaderboard position</li>
-                            <li>Competition history</li>
-                        </ul>
-                        <p><strong>Deleted within:</strong> 30 days</p>
-                    </div>
-
-                    <div class="data-card">
-                        <h4>👤 Account Information</h4>
-                        <ul>
-                            <li>Google account association</li>
-                            <li>Display name and profile photo</li>
-                            <li>Account preferences</li>
-                        </ul>
-                        <p><strong>Deleted within:</strong> 30 days</p>
-                    </div>
-
-                    <div class="data-card">
-                        <h4>💬 User Feedback</h4>
-                        <ul>
-                            <li>App ratings and reviews</li>
-                            <li>Feedback submissions</li>
-                            <li>Support communications</li>
-                        </ul>
-                        <p><strong>Deleted within:</strong> 90 days</p>
-                    </div>
-
-                    <div class="data-card">
-                        <h4>📱 Local Game Data</h4>
-                        <ul>
-                            <li>Game statistics and history</li>
-                            <li>App preferences and settings</li>
-                            <li>Local achievements</li>
-                        </ul>
-                        <p><strong>How to delete:</strong> Uninstall the app</p>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <h2>📧 Submit Deletion Request</h2>
-                <p>Fill out the form below to request account deletion. This will generate a simple email with your request
-                    that will be sent to our support team.</p>
-
-                <div class="deletion-form">
-                    <form id="deletionForm">
-                        <div class="form-group">
-                            <label for="googleEmail" class="form-label">
-                                Google Account Email Address *
-                            </label>
-                            <input type="email" id="googleEmail" name="googleEmail" class="form-input" required
-                                placeholder="your.email@gmail.com">
-                            <div class="form-help">
-                                The email address you used to sign into Tappy Tac Toe leaderboards
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="displayName" class="form-label">
-                                Display Name in App
-                            </label>
-                            <input type="text" id="displayName" name="displayName" class="form-input"
-                                placeholder="Your name as shown in leaderboards">
-                            <div class="form-help">
-                                The name that appears in the leaderboards (if you remember it)
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="firstUsed" class="form-label">
-                                When did you first use leaderboards?
-                            </label>
-                            <input type="date" id="firstUsed" name="firstUsed" class="form-input">
-                            <div class="form-help">
-                                Approximate date when you first signed in (helps us locate your data)
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="form-label">
-                                What data do you want deleted? *
-                            </label>
-                            <div class="checkbox-group">
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="deleteLeaderboard" name="dataToDelete"
-                                        value="leaderboard" checked>
-                                    <label for="deleteLeaderboard">Leaderboard data (scores, rankings,
-                                        achievements)</label>
-                                </div>
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="deleteAccount" name="dataToDelete" value="account"
-                                        checked>
-                                    <label for="deleteAccount">Account information (Google association, profile
-                                        data)</label>
-                                </div>
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="deleteFeedback" name="dataToDelete" value="feedback"
-                                        checked>
-                                    <label for="deleteFeedback">Feedback and ratings (app reviews, support
-                                        messages)</label>
-                                </div>
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="deleteAll" name="dataToDelete" value="all" checked>
-                                    <label for="deleteAll">All data associated with my account</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="reason" class="form-label">
-                                Reason for deletion (optional)
-                            </label>
-                            <select id="reason" name="reason" class="form-input">
-                                <option value="">Select a reason...</option>
-                                <option value="privacy">Privacy concerns</option>
-                                <option value="no-longer-using">No longer using the app</option>
-                                <option value="too-many-accounts">Too many online accounts</option>
-                                <option value="data-minimization">Want to minimize my digital footprint</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="additionalInfo" class="form-label">
-                                Additional Information (optional)
-                            </label>
-                            <textarea id="additionalInfo" name="additionalInfo" rows="3" class="form-input"
-                                placeholder="Any additional details or special requests..."></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="confirmation" name="confirmation" required>
-                                <label for="confirmation">I understand that this deletion is permanent and cannot be
-                                    undone *</label>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="verification" name="verification" required>
-                                <label for="verification">I confirm that I am the owner of the Google account listed
-                                    above *</label>
-                            </div>
-                        </div>
-
-                        <button type="submit" class="deletion-button">
-                            🗑️ Submit Deletion Request
-                        </button>
-                        
-                        <button type="button" id="copyEmailButton" class="deletion-button" style="background: #06b6d4; margin-top: 0.5rem;">
-                            📋 Copy Email Content
-                        </button>
-                    </form>
-                </div>
-            </section>
-
-            <section>
-                <h2>⚡ Quick Email Option</h2>
-                <div class="contact-section">
-                    <h3>Prefer a Simple Email?</h3>
-                    <p>If you prefer not to use the form above, you can send a simple email with your deletion request.
-                    </p>
-
-                    <a href="mailto:ck.futuretech@gmail.com?subject=Tappy%20Tac%20Toe%20Account%20Deletion%20Request&body=Hello%20CK%20FutureTech%2C%0A%0AI%20request%20permanent%20deletion%20of%20my%20Tappy%20Tac%20Toe%20account.%0A%0AAccount%20Email%3A%20%5BYour%20Email%20Here%5D%0ADisplay%20Name%3A%20%5BYour%20Display%20Name%5D%0AFirst%20Used%3A%20%5BApproximate%20Date%5D%0AData%20to%20Delete%3A%20All%20account%20data%0A%0AI%20understand%20this%20is%20permanent%20and%20cannot%20be%20undone.%0A%0AThank%20you."
-                        class="email-button">
-                        📧 Send Simple Deletion Request
-                    </a>
-
-                    <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
-                        <strong>Response Time:</strong> We typically respond within 48 hours<br>
-                        <strong>Business Hours:</strong> Monday-Friday, 9 AM - 5 PM (Your Local Time)
-                    </p>
-                </div>
-            </section>
-
-            <section>
-                <h2>📋 What Happens Next</h2>
-                <ol>
-                    <li><strong>Email Sent:</strong> Your deletion request is sent to our support team</li>
-                    <li><strong>Verification:</strong> We verify your identity within 48 hours</li>
-                    <li><strong>Processing:</strong> Account data is marked for deletion within 7 days</li>
-                    <li><strong>Completion:</strong> All data permanently deleted within 30-90 days</li>
-                    <li><strong>Confirmation:</strong> You receive final confirmation email</li>
-                </ol>
-            </section>
-
-            <section>
-                <h2>❓ Frequently Asked Questions</h2>
-
-                <div class="data-card">
-                    <h4>Can I recover my account after deletion?</h4>
-                    <p>No, account deletion is permanent and irreversible. Once deleted, your leaderboard data, scores,
-                        and account information cannot be recovered.</p>
-                </div>
-
-                <div class="data-card">
-                    <h4>How do I delete local game data?</h4>
-                    <p>Local game data (statistics, preferences) is stored on your device. To delete this data,
-                        uninstall the Tappy Tac Toe app or clear app data in your Android settings.</p>
-                </div>
-
-                <div class="data-card">
-                    <h4>What happens to my Google account?</h4>
-                    <p>Deleting your Tappy Tac Toe account does not affect your Google account. We only remove the
-                        association between your Google account and our app.</p>
-                </div>
-            </section>
-        </div>
+  <div class="container">
+    <div class="header">
+      <div class="logo-container">
+        🎯
+      </div>
+      <h1>Data Deletion Request</h1>
+      <div class="header-subtitle">Tappy Tac Toe by CK FutureTech</div>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Form submission handler
-            const deletionForm = document.getElementById('deletionForm');
-            if (deletionForm) {
-                deletionForm.addEventListener('submit', function (e) {
-                    e.preventDefault();
+    <div class="content">
+      <div class="intro-section">
+        <h2>Request Deletion of Your Tappy Tac Toe Data</h2>
+        <p>We understand that sometimes you may want to completely remove your data from our systems. We respect your right to privacy and will process your deletion request promptly and thoroughly.</p>
+      </div>
 
-                    // Show loading state
-                    const submitButton = this.querySelector('.deletion-button');
-                    const originalText = submitButton.innerHTML;
-                    submitButton.innerHTML = '📧 Opening Email...';
-                    submitButton.disabled = true;
+      <div class="warning-box">
+        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+          <line x1="12" y1="9" x2="12" y2="13"></line>
+          <line x1="12" y1="17" x2="12.01" y2="17"></line>
+        </svg>
+        <h3>Important: This Action Cannot Be Undone</h3>
+        <p>Once we process your deletion request, all your Tappy Tac Toe data will be permanently removed from our systems. This includes leaderboard scores, account information, and all associated data.</p>
+        <p><strong>Please make sure to consider this carefully before proceeding.</strong></p>
+      </div>
 
-                    // Collect form data
-                    const formData = new FormData(this);
-                    const data = {};
+      <div class="form-section">
+        <h3>
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          What Data Will Be Deleted
+        </h3>
+        <div class="data-types">
+          <div class="data-type-item">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+            </svg>
+            <h4>Leaderboard Data</h4>
+            <p>Scores, rankings, and competition history</p>
+            <div class="timeline">Deleted within 30 days</div>
+          </div>
+          <div class="data-type-item">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <h4>Account Information</h4>
+            <p>Google account association and profile data</p>
+            <div class="timeline">Deleted within 30 days</div>
+          </div>
+          <div class="data-type-item">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+            <h4>User Feedback</h4>
+            <p>App ratings, reviews, and support messages</p>
+            <div class="timeline">Deleted within 90 days</div>
+          </div>
+          <div class="data-type-item">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+            <h4>Local Game Data</h4>
+            <p>Game statistics and app preferences</p>
+            <div class="timeline">Uninstall the app</div>
+          </div>
+        </div>
+      </div>
 
-                    // Get basic fields
-                    data.googleEmail = formData.get('googleEmail');
-                    data.displayName = formData.get('displayName') || 'Not provided';
-                    data.firstUsed = formData.get('firstUsed') || 'Not provided';
-                    data.reason = formData.get('reason') || 'Not specified';
-                    data.additionalInfo = formData.get('additionalInfo') || 'None';
+      <div class="deletion-form">
+        <form id="deletionForm">
+          <div class="form-section">
+            <h3>
+              <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              Contact Information
+            </h3>
+            
+            <div class="form-group">
+              <label for="email">Google Account Email Address *</label>
+              <input type="email" id="email" name="email" required 
+                     placeholder="your.email@gmail.com">
+              <small>The email address you used to sign into Tappy Tac Toe leaderboards</small>
+            </div>
 
-                    // Get selected data types to delete
-                    const dataToDelete = [];
-                    const checkboxes = document.querySelectorAll('input[name="dataToDelete"]:checked');
-                    checkboxes.forEach(cb => {
-                        const label = cb.nextElementSibling.textContent;
-                        dataToDelete.push(label);
-                    });
-                    data.dataToDelete = dataToDelete.join(', ');
+            <div class="form-group">
+              <label for="displayName">Display Name (Optional)</label>
+              <input type="text" id="displayName" name="displayName" 
+                     placeholder="Your name as shown in leaderboards">
+              <small>The name that appears in the leaderboards (if you remember it)</small>
+            </div>
+          </div>
 
-                    // Get current date and time
-                    const now = new Date();
-                    data.requestDate = now.toLocaleDateString() + ' at ' + now.toLocaleTimeString();
-                    data.requestId = Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+          <div class="form-section">
+            <h3>
+              <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14,2 14,8 20,8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10,9 9,9 8,9"></polyline>
+              </svg>
+              Deletion Details
+            </h3>
 
-                    // Create simplified email subject and body
-                    const subject = encodeURIComponent('Tappy Tac Toe Account Deletion Request');
+            <div class="form-group">
+              <label for="dataTypes">What data do you want deleted?</label>
+              <select id="dataTypes" name="dataTypes" required>
+                <option value="">Select deletion scope</option>
+                <option value="all">All my data (Complete deletion)</option>
+                <option value="leaderboard">Only leaderboard data</option>
+                <option value="account">Only account information</option>
+                <option value="feedback">Only feedback and reviews</option>
+              </select>
+            </div>
 
-                    const emailBody = `Hello CK FutureTech,
+            <div class="form-group">
+              <label for="firstUsed">When did you first use leaderboards? (Optional)</label>
+              <input type="date" id="firstUsed" name="firstUsed">
+              <small>Approximate date when you first signed in (helps us locate your data)</small>
+            </div>
 
-I request permanent deletion of my Tappy Tac Toe account.
+            <div class="form-group">
+              <label for="reason">Reason for Deletion (Optional)</label>
+              <select id="reason" name="reason">
+                <option value="">Select a reason (optional)</option>
+                <option value="privacy">Privacy concerns</option>
+            <div class="form-group">
+              <label for="reason">Reason for Deletion (Optional)</label>
+              <select id="reason" name="reason">
+                <option value="">Select a reason (optional)</option>
+                <option value="privacy">Privacy concerns</option>
+                <option value="no-longer-using">No longer using the app</option>
+                <option value="too-many-accounts">Too many online accounts</option>
+                <option value="data-minimization">Want to minimize digital footprint</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
 
-Account Email: ${data.googleEmail}
-Display Name: ${data.displayName}
-First Used: ${data.firstUsed}
-Request ID: ${data.requestId}
+            <div class="form-group">
+              <label for="additionalInfo">Additional Information (Optional)</label>
+              <textarea id="additionalInfo" name="additionalInfo" 
+                        placeholder="Any additional details that might help us process your request faster..."></textarea>
+              <small>For example: specific concerns, approximate usage period, etc.</small>
+            </div>
+          </div>
 
-Data to Delete: ${data.dataToDelete}
+          <div class="form-section">
+            <h3>
+              <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 12l2 2 4-4"></path>
+                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3 4-3 9-3 9 1.34 9 3"></path>
+                <path d="M21 5c0 1.66-4 3-9 3S3 6.66 3 5s4-3 9-3 9 1.34 9 3"></path>
+                <path d="M21 19c0 1.66-4 3-9 3s-9-1.34-9-3 4-3 9-3 9 1.34 9 3"></path>
+              </svg>
+              Confirmation
+            </h3>
 
-Reason: ${data.reason}
-Additional Info: ${data.additionalInfo}
+            <div class="checkbox-group">
+              <input type="checkbox" id="confirmDeletion" name="confirmDeletion" required>
+              <label for="confirmDeletion">
+                I understand that this action cannot be undone and all my Tappy Tac Toe data will be permanently deleted from your systems.
+              </label>
+            </div>
 
-I confirm:
-- I own this Google account
-- I understand deletion is permanent
-- I agree to the deletion timeline
+            <div class="checkbox-group">
+              <input type="checkbox" id="confirmIdentity" name="confirmIdentity" required>
+              <label for="confirmIdentity">
+                I confirm that I am the rightful owner of this Google account and associated game data.
+              </label>
+            </div>
+          </div>
 
-Please process within 30-90 days and send confirmation.
+          <div class="submit-section">
+            <button type="submit" class="submit-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              Send Deletion Request
+            </button>
+            <p style="margin-top: var(--spacing-md); color: var(--text-secondary); font-size: 0.9rem;">
+              This will open your email client with a pre-filled deletion request
+            </p>
+          </div>
+        </form>
+      </div>
 
-Thank you,
-${data.displayName}`;
+      <div class="timeline">
+        <h3>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12,6 12,12 16,14"></polyline>
+          </svg>
+          What Happens Next?
+        </h3>
+        <div class="timeline-steps">
+          <div class="timeline-step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h4>Email Sent</h4>
+              <p>Your deletion request will be sent to our privacy team via email</p>
+            </div>
+          </div>
+          <div class="timeline-step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h4>Verification (48 hours)</h4>
+              <p>We'll verify your identity and send you a confirmation email</p>
+            </div>
+          </div>
+          <div class="timeline-step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h4>Data Deletion (7-30 days)</h4>
+              <p>Your data will be permanently removed according to the timeline above</p>
+            </div>
+          </div>
+          <div class="timeline-step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <h4>Completion Notice</h4>
+              <p>You'll receive a final confirmation that deletion is complete</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-                    // Create simple mailto URL (works better on mobile)
-                    const mailtoUrl = `mailto:ck.futuretech@gmail.com?subject=${subject}&body=${encodeURIComponent(emailBody)}`;
-                    
-                    // Create simplified Gmail web URL
-                    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=ck.futuretech@gmail.com&su=${subject}&body=${encodeURIComponent(emailBody)}`;
+    <div class="footer">
+      <p>&copy; 2025 CK FutureTech. All rights reserved.</p>
+      <p>We respect your privacy and right to be forgotten</p>
+      <p><strong>Response Time: Within 48 hours</strong></p>
+    </div>
+  </div>
 
-                    setTimeout(() => {
-                        // Try to copy email content to clipboard
-                        const fullEmailContent = `To: ck.futuretech@gmail.com
-Subject: ${decodeURIComponent(subject)}
+  <script>
+    // Theme toggle functionality
+    const themeToggle = document.getElementById('theme-toggle');
+    const scrollTopButton = document.getElementById('scroll-top');
 
-${emailBody}`;
+    // Use media query to determine default theme
+    const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const defaultTheme = prefersDarkMode ? 'dark' : 'light';
 
-                        // Function to copy to clipboard
-                        const copyToClipboard = async (text) => {
-                            try {
-                                if (navigator.clipboard && window.isSecureContext) {
-                                    await navigator.clipboard.writeText(text);
-                                    return true;
-                                } else {
-                                    // Fallback for older browsers
-                                    const textArea = document.createElement('textarea');
-                                    textArea.value = text;
-                                    textArea.style.position = 'fixed';
-                                    textArea.style.left = '-999999px';
-                                    textArea.style.top = '-999999px';
-                                    document.body.appendChild(textArea);
-                                    textArea.focus();
-                                    textArea.select();
-                                    const result = document.execCommand('copy');
-                                    document.body.removeChild(textArea);
-                                    return result;
-                                }
-                            } catch (err) {
-                                return false;
-                            }
-                        };
+    // Apply the default theme
+    document.documentElement.setAttribute('data-theme', defaultTheme);
 
-                        // Check if mobile device
-                        const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-                        
-                        // Try to copy content to clipboard
-                        copyToClipboard(fullEmailContent).then(copied => {
-                            // Show success message
-                            submitButton.innerHTML = '✅ Ready to Send!';
-                            submitButton.style.background = '#10b981';
+    // Add click event for theme toggle
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+    });
 
-                            setTimeout(() => {
-                                if (copied) {
-                                    // Content copied successfully
-                                    const userChoice = confirm(`📋 Email content copied to clipboard!
+    // Scroll to top functionality
+    scrollTopButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
 
-REQUEST ID: ${data.requestId}
-TO: ck.futuretech@gmail.com
+    // Form submission handling
+    document.getElementById('deletionForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Get form data
+      const formData = new FormData(this);
+      const data = Object.fromEntries(formData);
+      
+      // Validate required fields
+      if (!data.email || !data.dataTypes || !data.confirmDeletion || !data.confirmIdentity) {
+        alert('Please fill in all required fields and confirm all checkboxes.');
+        return;
+      }
 
-NEXT STEPS:
-1. Click "OK" to open Gmail app
-2. Create new email
-3. Paste the copied content (long press → Paste)
-4. Send the email
+      // Generate unique request ID
+      const requestId = Date.now() + '-' + Math.random().toString(36).substr(2, 9);
 
-Click "OK" to open Gmail now, or "Cancel" to copy again.`);
+      // Generate email content
+      const emailSubject = encodeURIComponent('Tappy Tac Toe Account Deletion Request');
+      
+      const emailBody = encodeURIComponent(`
+Tappy Tac Toe Account Deletion Request
 
-                                    if (userChoice) {
-                                        // Open Gmail app
-                                        window.location.href = 'mailto:ck.futuretech@gmail.com';
-                                    } else {
-                                        // Show the content in an alert for manual copy
-                                        alert(`📧 COPY THIS EMAIL CONTENT:
+Contact Information:
+- Google Account Email: ${data.email}
+- Display Name: ${data.displayName || 'Not provided'}
+- First Used Leaderboards: ${data.firstUsed || 'Not provided'}
 
-${fullEmailContent}
+Deletion Details:
+- Data to Delete: ${data.dataTypes}
+- Reason: ${data.reason || 'Not specified'}
 
-TO SEND:
-1. Open Gmail app manually
-2. Create new email to: ck.futuretech@gmail.com  
-3. Copy and paste the above content
-4. Send the email
+Additional Information:
+${data.additionalInfo || 'None provided'}
 
-Request ID: ${data.requestId}`);
-                                    }
-                                } else {
-                                    // Couldn't copy - show content directly
-                                    alert(`📧 PLEASE COPY THIS EMAIL CONTENT:
+Confirmations:
+✓ I understand this action cannot be undone
+✓ I confirm I am the rightful owner of this Google account
 
-${fullEmailContent}
+Request Details:
+- Request ID: ${requestId}
+- Request Date: ${new Date().toLocaleDateString()}
+- Request Time: ${new Date().toLocaleTimeString()}
 
-TO SEND:
-1. Open Gmail app
-2. Create new email to: ck.futuretech@gmail.com
-3. Copy and paste the above content
-4. Send the email
+Please process this deletion request according to your privacy policy. I understand that my Tappy Tac Toe data will be permanently removed from your systems within the specified timeframes (30-90 days depending on data type).
 
-Request ID: ${data.requestId}`);
+Thank you for your assistance.
+      `);
 
-                                    // Also try to open Gmail
-                                    setTimeout(() => {
-                                        window.location.href = 'mailto:ck.futuretech@gmail.com';
-                                    }, 1000);
-                                }
+      // Open email client
+      const mailtoLink = `mailto:ck.futuretech@gmail.com?subject=${emailSubject}&body=${emailBody}`;
+      window.location.href = mailtoLink;
+      
+      // Show success message
+      setTimeout(() => {
+        alert(`✅ Email client opened successfully!
 
-                                // Reset form
-                                setTimeout(() => {
-                                    deletionForm.reset();
-                                    submitButton.innerHTML = originalText;
-                                    submitButton.style.background = '#ef4444';
-                                    submitButton.disabled = false;
-                                }, 2000);
-                            }, 1500);
-                        });
-                    }, 500);
-                });
-            }
+REQUEST ID: ${requestId}
 
-            // Handle "Delete All" checkbox
-            const deleteAllCheckbox = document.getElementById('deleteAll');
-            if (deleteAllCheckbox) {
-                deleteAllCheckbox.addEventListener('change', function () {
-                    const otherCheckboxes = document.querySelectorAll('input[name="dataToDelete"]:not(#deleteAll)');
-                    if (this.checked) {
-                        otherCheckboxes.forEach(cb => cb.checked = true);
-                    }
-                });
-            }
+Your email client should now be open with a pre-filled deletion request. Please send the email to complete your request.
 
-            // Handle individual checkboxes
-            const individualCheckboxes = document.querySelectorAll('input[name="dataToDelete"]:not(#deleteAll)');
-            individualCheckboxes.forEach(cb => {
-                cb.addEventListener('change', function () {
-                    const deleteAllCb = document.getElementById('deleteAll');
-                    if (deleteAllCb) {
-                        const allOthersChecked = Array.from(document.querySelectorAll('input[name="dataToDelete"]:not(#deleteAll)')).every(cb => cb.checked);
-                        deleteAllCb.checked = allOthersChecked;
-                    }
-                });
-            });
+We'll respond within 48 hours to verify your identity and begin the deletion process.`);
+      }, 500);
+    });
 
-            // Copy Email Button Handler
-            const copyEmailButton = document.getElementById('copyEmailButton');
-            if (copyEmailButton) {
-                copyEmailButton.addEventListener('click', function() {
-                    // Collect form data (similar to submit)
-                    const formData = new FormData(deletionForm);
-                    const data = {};
+    // Form validation feedback
+    const requiredFields = document.querySelectorAll('input[required], select[required]');
+    requiredFields.forEach(field => {
+      field.addEventListener('blur', function() {
+        if (!this.value) {
+          this.style.borderColor = 'var(--danger-color)';
+        } else {
+          this.style.borderColor = 'var(--border-color)';
+        }
+      });
 
-                    data.googleEmail = formData.get('googleEmail') || 'Please enter your email';
-                    data.displayName = formData.get('displayName') || 'Not provided';
-                    data.firstUsed = formData.get('firstUsed') || 'Not provided';
-                    data.reason = formData.get('reason') || 'Not specified';
-                    data.additionalInfo = formData.get('additionalInfo') || 'None';
+      field.addEventListener('input', function() {
+        if (this.value) {
+          this.style.borderColor = 'var(--secondary-color)';
+        }
+      });
+    });
 
-                    const dataToDelete = [];
-                    const checkboxes = document.querySelectorAll('input[name="dataToDelete"]:checked');
-                    checkboxes.forEach(cb => {
-                        const label = cb.nextElementSibling.textContent;
-                        dataToDelete.push(label);
-                    });
-                    data.dataToDelete = dataToDelete.join(', ');
+    // Email validation
+    document.getElementById('email').addEventListener('input', function() {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (this.value && !emailRegex.test(this.value)) {
+        this.style.borderColor = 'var(--danger-color)';
+      } else if (this.value) {
+        this.style.borderColor = 'var(--secondary-color)';
+      }
+    });
 
-                    const now = new Date();
-                    data.requestId = Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+    // Show/hide additional info based on reason
+    document.getElementById('reason').addEventListener('change', function() {
+      const additionalInfo = document.getElementById('additionalInfo');
+      if (this.value === 'other') {
+        additionalInfo.placeholder = 'Please specify your reason for deletion...';
+        additionalInfo.focus();
+      } else {
+        additionalInfo.placeholder = 'Any additional details that might help us process your request faster...';
+      }
+    });
 
-                    const emailContent = `Hello CK FutureTech,
+    // Animate elements on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
 
-I request permanent deletion of my Tappy Tac Toe account.
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
 
-Account Email: ${data.googleEmail}
-Display Name: ${data.displayName}
-First Used: ${data.firstUsed}
-Request ID: ${data.requestId}
-
-Data to Delete: ${data.dataToDelete}
-
-Reason: ${data.reason}
-Additional Info: ${data.additionalInfo}
-
-I confirm:
-- I own this Google account
-- I understand deletion is permanent
-- I agree to the deletion timeline
-
-Please process within 30-90 days and send confirmation.
-
-Thank you,
-${data.displayName}`;
-
-                    // Copy to clipboard
-                    const copyToClipboard = async (text) => {
-                        try {
-                            if (navigator.clipboard) {
-                                await navigator.clipboard.writeText(text);
-                                return true;
-                            } else {
-                                const textArea = document.createElement('textarea');
-                                textArea.value = text;
-                                document.body.appendChild(textArea);
-                                textArea.select();
-                                const result = document.execCommand('copy');
-                                document.body.removeChild(textArea);
-                                return result;
-                            }
-                        } catch (err) {
-                            return false;
-                        }
-                    };
-
-                    copyToClipboard(emailContent).then(copied => {
-                        if (copied) {
-                            this.innerHTML = '✅ Copied!';
-                            this.style.background = '#10b981';
-                            
-                            alert(`📋 Email content copied successfully!
-
-TO SEND YOUR REQUEST:
-1. Open Gmail app
-2. Create new email
-3. To: ck.futuretech@gmail.com
-4. Subject: Tappy Tac Toe Account Deletion Request
-5. Paste content in message body
-6. Send email
-
-Request ID: ${data.requestId}
-
-Click OK to open Gmail app now.`);
-
-                            // Open Gmail
-                            window.location.href = 'mailto:ck.futuretech@gmail.com?subject=Tappy%20Tac%20Toe%20Account%20Deletion%20Request';
-
-                            setTimeout(() => {
-                                this.innerHTML = '📋 Copy Email Content';
-                                this.style.background = '#06b6d4';
-                            }, 3000);
-                        } else {
-                            alert(`❌ Could not copy automatically. Please copy this text manually:
-
-${emailContent}
-
-TO SEND:
-1. Copy the above text
-2. Open Gmail app  
-3. Send to: ck.futuretech@gmail.com
-4. Subject: Tappy Tac Toe Account Deletion Request
-
-Request ID: ${data.requestId}`);
-                        }
-                    });
-                });
-            }
-
-            // Email validation
-            const googleEmailField = document.getElementById('googleEmail');
-            if (googleEmailField) {
-                googleEmailField.addEventListener('blur', function () {
-                    const email = this.value;
-                    if (email && (!email.includes('@') || !email.includes('.'))) {
-                        this.style.borderColor = '#ef4444';
-                        this.setCustomValidity('Please enter a valid email address');
-                    } else {
-                        this.style.borderColor = '';
-                        this.setCustomValidity('');
-                    }
-                });
-            }
-        });
-    </script>
+    // Observe all animatable elements
+    document.querySelectorAll('.data-type-item, .timeline-step, .form-section').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+  </script>
 </body>
 
 </html>
